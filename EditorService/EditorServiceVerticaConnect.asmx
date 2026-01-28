@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="EditorServiceVerticaConnect.asmx.cs" Class="EditorService.EditorService" %>

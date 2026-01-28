@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\0020H33550\source\web_service_DataTransfer\DataTransfer\DataTransfer\bin\app.publish\</_PublishTargetUrl>
+    <History>False|2024-09-02T07:35:13.7531594Z;False|2024-09-02T16:32:26.7128048+09:00;False|2024-09-02T16:30:14.3812583+09:00;False|2024-09-02T16:28:26.1832762+09:00;False|2024-09-02T16:21:37.2877386+09:00;False|2024-09-02T16:18:01.0782569+09:00;False|2024-09-02T16:16:51.0966749+09:00;False|2024-09-02T16:14:52.9151979+09:00;False|2024-09-02T16:14:29.2577911+09:00;False|2024-09-02T16:13:00.6641035+09:00;False|2024-09-02T16:12:32.5556493+09:00;False|2024-09-02T16:08:40.7956862+09:00;False|2024-09-02T16:07:13.5686244+09:00;False|2024-09-02T16:03:12.4127561+09:00;False|2024-09-02T15:59:23.4765900+09:00;False|2024-09-02T15:55:05.9617832+09:00;False|2024-09-02T15:50:42.6162128+09:00;False|2024-09-02T13:46:30.2851917+09:00;False|2024-09-02T13:45:38.9897987+09:00;False|2024-09-02T13:42:42.2712887+09:00;False|2024-08-23T09:14:28.0196322+09:00;False|2024-08-22T18:26:11.6662043+09:00;False|2024-08-22T17:24:45.5084600+09:00;False|2024-08-22T17:17:27.5353248+09:00;False|2024-08-22T17:15:10.3190284+09:00;False|2024-08-22T17:13:37.5941242+09:00;False|2024-08-22T17:12:58.9416299+09:00;False|2024-08-22T17:10:39.5009425+09:00;False|2024-08-22T16:54:50.3529411+09:00;False|2024-08-22T16:42:12.4441179+09:00;False|2024-08-22T16:36:15.0349739+09:00;False|2024-08-22T16:34:01.6767135+09:00;False|2024-08-22T16:32:42.1528639+09:00;False|2024-08-22T16:31:44.6582303+09:00;False|2024-08-22T16:29:52.8291206+09:00;False|2024-08-22T16:28:34.6022915+09:00;False|2024-08-22T16:28:13.2898194+09:00;True|2024-08-16T18:47:21.9792959+09:00;True|2024-08-16T15:55:43.3591799+09:00;True|2024-08-16T13:00:32.0203146+09:00;True|2024-08-16T12:49:28.5090782+09:00;True|2024-08-16T11:47:56.4556399+09:00;True|2024-08-16T10:09:12.9984206+09:00;True|2024-08-16T10:01:28.6650502+09:00;True|2024-08-09T18:15:57.4730033+09:00;True|2024-08-09T17:14:56.7101230+09:00;True|2024-08-09T14:51:03.7904287+09:00;True|2024-08-09T14:35:17.1715204+09:00;True|2024-08-09T14:32:58.4125810+09:00;True|2024-08-09T14:23:54.8773622+09:00;True|2023-09-28T13:48:38.8361440+09:00;True|2023-09-28T13:35:47.8333439+09:00;True|2023-09-28T12:28:09.5662859+09:00;True|2023-09-28T09:56:00.7996197+09:00;True|2023-09-28T09:55:27.1652175+09:00;True|2023-09-27T19:31:16.5207171+09:00;True|2023-09-27T19:30:52.3892640+09:00;True|2023-09-27T19:24:59.2468154+09:00;True|2023-09-27T19:05:05.8141439+09:00;True|2023-09-27T19:02:38.9305126+09:00;True|2023-09-27T14:47:15.4133884+09:00;True|2023-09-27T14:30:02.5641050+09:00;True|2023-09-27T14:08:13.3690461+09:00;True|2023-09-27T14:04:05.3538705+09:00;True|2023-09-27T14:02:29.2494013+09:00;True|2023-09-27T13:54:58.5418587+09:00;True|2023-09-26T19:15:15.0190110+09:00;True|2023-09-26T19:13:49.0743720+09:00;True|2023-09-26T19:02:28.1918303+09:00;True|2023-09-26T18:59:53.9963301+09:00;True|2023-09-26T18:54:05.4848570+09:00;True|2023-09-26T18:43:31.9150928+09:00;True|2023-09-26T18:40:31.1084551+09:00;True|2023-09-26T18:35:10.0402149+09:00;True|2023-09-25T20:23:06.1705159+09:00;True|2023-09-25T18:32:52.1198808+09:00;True|2023-09-25T18:08:54.4672426+09:00;True|2023-09-25T18:01:08.5239813+09:00;True|2023-09-22T21:56:27.3516514+09:00;True|2023-09-22T21:46:36.9953666+09:00;True|2023-09-22T21:38:17.0123936+09:00;True|2023-09-22T21:19:43.9292907+09:00;True|2023-09-22T21:09:44.6939264+09:00;True|2023-09-22T20:47:03.9533251+09:00;True|2023-09-22T20:46:49.5501915+09:00;True|2023-09-22T18:44:25.5481240+09:00;True|2023-09-22T14:11:29.9772447+09:00;True|2023-09-20T21:26:27.3734700+09:00;True|2023-09-20T19:20:54.5841821+09:00;True|2023-09-20T17:32:22.3634947+09:00;True|2023-09-20T17:29:02.6369906+09:00;True|2023-09-20T17:15:09.1228286+09:00;True|2023-09-20T17:13:22.4650115+09:00;True|2023-09-20T16:48:55.3122376+09:00;True|2023-09-20T12:07:06.0721358+09:00;False|2023-09-20T12:06:37.0680862+09:00;True|2023-09-20T11:37:26.0277343+09:00;True|2023-09-20T10:46:15.4269163+09:00;True|2023-09-15T11:27:11.0043914+09:00;True|2023-09-14T17:06:17.3885170+09:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/BouncyCastle.Crypto.dll">
+      <publishTime>10/19/2021 20:53:32</publishTime>
+    </File>
+    <File Include="bin/DataTransfer.dll">
+      <publishTime>08/16/2024 18:47:08</publishTime>
+    </File>
+    <File Include="bin/DataTransfer.pdb">
+      <publishTime>08/16/2024 18:47:08</publishTime>
+    </File>
+    <File Include="bin/Google.Protobuf.dll">
+      <publishTime>10/26/2022 22:46:16</publishTime>
+    </File>
+    <File Include="bin/Google.Protobuf.pdb">
+      <publishTime>10/27/2022 03:42:16</publishTime>
+    </File>
+    <File Include="bin/K4os.Compression.LZ4.dll">
+      <publishTime>01/07/2023 02:16:10</publishTime>
+    </File>
+    <File Include="bin/K4os.Compression.LZ4.Streams.dll">
+      <publishTime>01/07/2023 02:16:12</publishTime>
+    </File>
+    <File Include="bin/K4os.Hash.xxHash.dll">
+      <publishTime>11/09/2022 03:08:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Bcl.AsyncInterfaces.dll">
+      <publishTime>10/20/2020 03:40:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>09/05/2018 16:10:50</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>07/12/2023 12:30:50</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>08/08/2018 12:18:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>08/08/2018 12:09:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>08/08/2018 12:18:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>08/08/2018 12:09:56</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>08/08/2018 12:09:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>12/05/2017 09:36:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>12/05/2017 09:36:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
+      <publishTime>08/08/2018 12:09:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>08/08/2018 12:09:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
+      <publishTime>11/05/2016 18:55:32</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>11/05/2016 18:55:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>05/16/2018 03:29:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Console.dll">
+      <publishTime>11/05/2016 18:55:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>11/05/2016 18:55:52</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
+      <publishTime>11/05/2016 18:55:56</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>11/05/2016 18:55:52</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Globalization.Calendars.dll">
+      <publishTime>11/05/2016 18:56:02</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.dll">
+      <publishTime>11/05/2016 18:56:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.ZipFile.dll">
+      <publishTime>11/05/2016 18:56:04</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>11/05/2016 18:56:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>11/05/2016 18:56:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Http.dll">
+      <publishTime>11/05/2016 18:56:30</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Sockets.dll">
+      <publishTime>11/05/2016 18:56:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>05/16/2018 03:29:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>11/05/2016 18:57:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>11/05/2016 18:57:14</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
+      <publishTime>11/05/2016 18:57:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
+      <publishTime>11/05/2016 18:57:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>11/05/2016 18:57:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>11/05/2016 18:57:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Threading.Tasks.Extensions.dll">
+      <publishTime>11/05/2016 18:57:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.ValueTuple.dll">
+      <publishTime>11/05/2016 18:57:30</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
+      <publishTime>11/05/2016 18:57:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
+      <publishTime>11/05/2016 18:57:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.dll">
+      <publishTime>11/05/2016 18:57:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
+      <publishTime>11/05/2016 18:57:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>08/08/2018 12:18:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>08/08/2018 12:09:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>08/08/2018 12:18:16</publishTime>
+    </File>
+    <File Include="bin/SCKLibrary.dll">
+      <publishTime>05/09/2014 16:02:30</publishTime>
+    </File>
+    <File Include="bin/System.Buffers.dll">
+      <publishTime>02/19/2020 19:05:18</publishTime>
+    </File>
+    <File Include="bin/System.Configuration.ConfigurationManager.dll">
+      <publishTime>11/21/2017 03:09:04</publishTime>
+    </File>
+    <File Include="bin/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>02/16/2023 09:55:30</publishTime>
+    </File>
+    <File Include="bin/System.IO.Pipelines.dll">
+      <publishTime>02/16/2022 02:10:38</publishTime>
+    </File>
+    <File Include="bin/System.Memory.dll">
+      <publishTime>05/08/2022 12:31:02</publishTime>
+    </File>
+    <File Include="bin/System.Numerics.Vectors.dll">
+      <publishTime>05/15/2018 22:29:44</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.CompilerServices.Unsafe.dll">
+      <publishTime>10/23/2021 08:40:18</publishTime>
+    </File>
+    <File Include="bin/System.Threading.Tasks.Extensions.dll">
+      <publishTime>02/19/2020 19:05:18</publishTime>
+    </File>
+    <File Include="bin/ZstdSharp.dll">
+      <publishTime>04/06/2023 21:25:30</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotInLotFromHistoryResponse.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotInLotFromHistoryResult.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForChipIdResponse.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForChipIdResult.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForEquipmentIdResponse.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForEquipmentIdResult.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForLotProcOprResponse.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForLotProcOprResult.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForLotResponse.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForLotResult.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForMarkLotResponse.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForMarkLotResult.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForMaterialLotResponse.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForMaterialLotResult.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForMeasureLotResponse.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForMeasureLotResult.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForProcOprResponse.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.GetLotListForProcOprResult.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="Connected Services/GuestLotSearchWebService/DataTransfer.GuestLotSearchWebService.WSResult.datasource">
+      <publishTime>09/25/2023 17:43:14</publishTime>
+    </File>
+    <File Include="DataTransferDefinitionService.asmx">
+      <publishTime>09/13/2023 19:18:56</publishTime>
+    </File>
+    <File Include="Properties/DataSources/System.Data.DataSet.datasource">
+      <publishTime>09/13/2023 19:19:28</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/16/2024 13:44:18</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
