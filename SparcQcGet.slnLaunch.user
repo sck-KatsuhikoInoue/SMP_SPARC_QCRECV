@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "新しいプロファイル",
+    "Projects": [
+      {
+        "Path": "EditorService\\EditorService.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "SMPPluginDebug\\SMPPluginDebug.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

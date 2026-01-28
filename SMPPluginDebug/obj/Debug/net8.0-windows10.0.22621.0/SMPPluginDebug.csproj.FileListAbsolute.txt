@@ -196,3 +196,4 @@ C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\SMPPluginDebug\obj\Debug\net8.
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\SMPPluginDebug\obj\Debug\net8.0-windows10.0.22621.0\SMPPluginDebug.pdb
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\SMPPluginDebug\obj\Debug\net8.0-windows10.0.22621.0\SMPPluginDebug.genruntimeconfig.cache
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\SMPPluginDebug\obj\Debug\net8.0-windows10.0.22621.0\ref\SMPPluginDebug.dll
+C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\SMPPluginDebug\obj\Debug\net8.0-windows10.0.22621.0\SMPPluginDebug.sourcelink.json

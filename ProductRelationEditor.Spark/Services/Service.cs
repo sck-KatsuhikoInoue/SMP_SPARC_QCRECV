@@ -1,6 +1,9 @@
 ﻿using ProductRelationEditor.Spark.Models;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ProductRelationEditor.Spark.Services
 {
@@ -30,6 +33,30 @@ namespace ProductRelationEditor.Spark.Services
         {
             await Task.Delay(1000);
             return true;
+        }
+
+        public async Task<IEnumerable<ItemModel>> EditorServiceSearchSpcChart(string searchConditionJson)
+        {
+            using var client = new HttpClient();
+            var url = $"{ServiceUrl}/EditorServiceVerticaConnect.asmx/SearchSpcChart";
+            var content = new StringContent($"searchCondition={System.Web.HttpUtility.UrlEncode(searchConditionJson)}", Encoding.UTF8, "application/x-www-form-urlencoded");
+
+            var response = await client.PostAsync(url, content);
+            response.EnsureSuccessStatusCode();
+
+            var xml = await response.Content.ReadAsStringAsync();
+
+            // XMLから必要なデータを抽出（例: DataTable形式のXMLをパース）
+            var doc = XDocument.Parse(xml);
+            var items = new List<ItemModel>();
+
+            foreach (var row in doc.Descendants("row"))
+            {
+                var item1 = (string)row.Element("TEC_KIND");
+                var item2 = (string)row.Element("GNAME");
+                items.Add(new ItemModel(item1, item2));
+            }
+            return items;
         }
     }
 }

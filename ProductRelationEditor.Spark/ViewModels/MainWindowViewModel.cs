@@ -41,7 +41,16 @@ namespace ProductRelationEditor.Spark.ViewModels
 
         public async Task FetchDataAsync()
         {
-            var fetchedItems = await _service.FetchDataAsync();
+            // åüçıèåèÇJSONÇ≈çÏê¨
+            var searchCondition = new {
+                TEC_KIND = "6",
+                CCATEGORY = "EQC",
+                EQP_ID = "L101Y2",
+                GNAME = "L101Y2"
+            };
+            var searchConditionJson = System.Text.Json.JsonSerializer.Serialize(searchCondition);
+
+            var fetchedItems = await _service.EditorServiceSearchSpcChart(searchConditionJson);
 
             Items.Clear();
             foreach (var item in fetchedItems)
