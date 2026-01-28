@@ -1,19 +1,19 @@
-﻿using System;
+﻿using Newtonsoft.Json; // Newtonsoft.Json の名前空間をインポート
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.Services;
-using System.Xml.Serialization;
-using System.Text;
 using System.Diagnostics;
-using System.Text.RegularExpressions;
-using System.Net.Mail;
-using System.Xml;
+using System.IO;
 using System.IO.Compression;
+using System.Linq;
+using System.Net.Mail;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Web;
 using System.Web.Configuration;
-using Newtonsoft.Json; // Newtonsoft.Json の名前空間をインポート
+using System.Web.Services;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace EditorService
 {
@@ -25,6 +25,30 @@ namespace EditorService
     [System.ComponentModel.ToolboxItem(false)]
     public class EditorService : System.Web.Services.WebService
     {
+        [WebMethod]
+        public DataTable TecKindList()
+        {
+            var creatorVertica = new CreatorVertica();
+
+            // 検索実行
+            var resultTask = creatorVertica.TecKindList();
+            resultTask.Wait(); // 非同期タスクを同期的に待機
+            var result = resultTask.Result;
+
+            return ConvertToDataTable(result);
+            //// IEnumerable<SpcMasterResult> を DataTable に変換
+            //var dataTable = ConvertToDataTable(result);
+
+            //// DataTableをJSONに変換して返す
+            //string json;
+            //using (var sw = new System.IO.StringWriter())
+            //{
+            //    dataTable.WriteXml(sw, XmlWriteMode.WriteSchema, false);
+            //    json = sw.ToString();
+            //}
+            //return json;
+        }
+
         [WebMethod]
         public string SearchSpcChart(string searchCondition)
         {
@@ -65,6 +89,27 @@ namespace EditorService
             return JsonConvert.DeserializeObject<SpcMasterParameter>(searchCondition);
         }
 
+        // IEnumerable<string> を DataTable に変換するヘルパーメソッド
+        private DataTable ConvertToDataTable(IEnumerable<string> data)
+        {
+            // DataTable の列を定義
+            var dataTable = new DataTable();
+
+            dataTable.TableName = "TecKindList";
+            dataTable.Columns.Add("DataItem", typeof(string));
+
+
+            // DataTable にデータを追加
+            foreach (var item in data)
+            {
+                var row = dataTable.NewRow();
+                row["DataItem"] = item;
+                dataTable.Rows.Add(row);
+            }
+
+            return dataTable;
+        }
+        
         // IEnumerable<SpcMasterResult> を DataTable に変換するヘルパーメソッド
         private DataTable ConvertToDataTable(IEnumerable<SpcMasterResult> data)
         {

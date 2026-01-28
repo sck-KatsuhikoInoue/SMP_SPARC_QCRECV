@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Vertica.Data.Internal.DotNetDSI;
 using Vertica.Data.VerticaClient;
 
 namespace EditorService

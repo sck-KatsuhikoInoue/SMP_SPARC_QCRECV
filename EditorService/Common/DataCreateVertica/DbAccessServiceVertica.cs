@@ -28,6 +28,38 @@ namespace EditorService
 
         internal string GetConnectionString() => _db?.ConnectionString ?? string.Empty;
 
+        internal async Task<IEnumerable<string>> TecKindList()
+        {
+            try
+            {
+                var sqlBuilder = new StringBuilder();
+                sqlBuilder.AppendLine("SELECT distinct TEC_KIND FROM stg_tseries.SPARC_SPC_CHART_MAST");
+
+                var sql = sqlBuilder.ToString();
+
+                var results = new List<string>();
+                using (var reader = await _db.ExecuteAsync(sql))
+                {
+                    if (reader.HasRows)
+                    {
+                        var idxTEC_KIND = reader.GetOrdinal("TEC_KIND");
+                        while (reader.Read())
+                        {
+                            results.Add(reader.GetStringSafe(idxTEC_KIND));
+                        }
+                    }
+                }
+
+                return results;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
         internal async Task<IEnumerable<SpcMasterResult>> SpcChartSearch(SpcMasterParameter param)
         {
             try

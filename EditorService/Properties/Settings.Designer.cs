@@ -25,7 +25,8 @@ namespace EditorService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Host=43.24.170.79;Database=verticadb_eonjnt;User ID=dbadmin;Password=P@ssword1!;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Host=43.24.170.79;Port=5433;Database=verticadb_eonjnt;User=dbadmin;Password=P@ssw" +
+            "ord1!;")]
         public string VerticaDb {
             get {
                 return ((string)(this["VerticaDb"]));

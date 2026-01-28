@@ -18,6 +18,9 @@ namespace ProductRelationEditor.Spark.ViewModels
         public ObservableCollection<ItemModel> Items => _items;
         private readonly ObservableCollection<ItemModel> _items;
 
+        // TecKind一覧用プロパティ
+        public ObservableCollection<string> TecKindList { get; } = new();
+
         // データ取得用のコマンド ButtonとBinding
         public DelegateCommand FetchDataCommand { get; }
         // データ登録用のコマンド ButtonとBinding
@@ -37,20 +40,26 @@ namespace ProductRelationEditor.Spark.ViewModels
 
             FetchDataCommand = new DelegateCommand(async () => await FetchDataAsync());
             RegisterDataCommand = new DelegateCommand(async () => await Register());
+
+            // TecKind一覧の初期化
+            _ = InitializeTecKindListAsync();
         }
 
         public async Task FetchDataAsync()
         {
-            // 検索条件をJSONで作成
-            var searchCondition = new {
-                TEC_KIND = "6",
-                CCATEGORY = "EQC",
-                EQP_ID = "L101Y2",
-                GNAME = "L101Y2"
-            };
-            var searchConditionJson = System.Text.Json.JsonSerializer.Serialize(searchCondition);
+            //// 検索条件をJSONで作成
+            //var searchCondition = new {
+            //    TEC_KIND = "6",
+            //    CCATEGORY = "EQC",
+            //    EQP_ID = "L101Y2",
+            //    GNAME = "L101Y2"
+            //};
+            //var searchConditionJson = System.Text.Json.JsonSerializer.Serialize(searchCondition);
 
-            var fetchedItems = await _service.EditorServiceSearchSpcChart(searchConditionJson);
+            //var fetchedItems = await _service.EditorServiceSearchSpcChart(searchConditionJson);
+
+            //// 検索条件をJSONで作成
+            var fetchedItems = await _service.FetchDataAsync();
 
             Items.Clear();
             foreach (var item in fetchedItems)
@@ -69,6 +78,17 @@ namespace ProductRelationEditor.Spark.ViewModels
             else
             {
                 MessageBox.Show("登録に失敗しました");
+            }
+        }
+
+        // TecKind一覧取得処理
+        private async Task InitializeTecKindListAsync()
+        {
+            var tecKinds = await _service.EditorServiceTecKindList();
+            TecKindList.Clear();
+            foreach (var kind in tecKinds)
+            {
+                TecKindList.Add(kind);
             }
         }
     }

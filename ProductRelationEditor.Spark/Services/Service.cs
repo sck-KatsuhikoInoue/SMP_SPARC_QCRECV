@@ -13,7 +13,8 @@ namespace ProductRelationEditor.Spark.Services
 
         public Service(string hostName)
         {
-            ServiceUrl = $@"{hostName.TrimEnd('/')}/tempurl";
+            //ServiceUrl = $@"{hostName.TrimEnd('/')}/tempurl";
+            ServiceUrl=$@"https://localhost:44347/";
         }
 
         public async Task<IEnumerable<ItemModel>> FetchDataAsync()
@@ -34,6 +35,28 @@ namespace ProductRelationEditor.Spark.Services
             await Task.Delay(1000);
             return true;
         }
+
+        public async Task<IEnumerable<string>> EditorServiceTecKindList()
+        {
+            using var client = new HttpClient();
+            var url = $"{ServiceUrl}/EditorServiceVerticaConnect.asmx/TecKindList";
+
+            var response = await client.PostAsync(url, content: null);
+            response.EnsureSuccessStatusCode();
+
+            var xml = await response.Content.ReadAsStringAsync();
+
+            //// XMLから必要なデータを抽出（例: DataTable形式のXMLをパース）
+            var doc = XDocument.Parse(xml);
+            var items = new List<string>();
+
+            foreach (var row in doc.Descendants("TecKindList"))
+            {
+                items.Add((string)row.Element("DataItem"));
+            }
+            return items;
+        }
+
 
         public async Task<IEnumerable<ItemModel>> EditorServiceSearchSpcChart(string searchConditionJson)
         {

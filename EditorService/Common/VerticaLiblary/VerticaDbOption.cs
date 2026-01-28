@@ -13,9 +13,9 @@ namespace EditorService
         {
             return new VerticaDbOption
             {
-                ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["VerticaDb"].ConnectionString,
-                ConnectionTimeoutSeconds = int.Parse(System.Configuration.ConfigurationManager.AppSettings["VerticaConnectionTimeoutSeconds"]),
-                ExecuteTimeoutSeconds = int.Parse(System.Configuration.ConfigurationManager.AppSettings["VerticaExecuteTimeoutSeconds"])
+                ConnectionString = Properties.Settings.Default.VerticaDb,
+                ConnectionTimeoutSeconds = Properties.Settings.Default.VerticaConnectionTimeoutSeconds,
+                ExecuteTimeoutSeconds = Properties.Settings.Default.VerticaExecuteTimeoutSeconds
             };
         }
     }

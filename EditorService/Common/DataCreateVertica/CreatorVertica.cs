@@ -25,9 +25,15 @@ namespace EditorService
 
         public string GetConnectionString() => _dbAccessService.GetConnectionString();
 
+        public async Task<IEnumerable<string>> TecKindList()
+        {
+            return await _dbAccessService.TecKindList();
+        }
+
         public async Task<IEnumerable<SpcMasterResult>> SpcChartSearch(SpcMasterParameter param)
         {
             return await _dbAccessService.SpcChartSearch(param);
         }
+
     }
 }
