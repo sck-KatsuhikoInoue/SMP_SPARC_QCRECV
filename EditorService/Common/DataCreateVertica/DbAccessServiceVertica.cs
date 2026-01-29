@@ -33,7 +33,7 @@ namespace EditorService
             try
             {
                 var sqlBuilder = new StringBuilder();
-                sqlBuilder.AppendLine("SELECT distinct TEC_KIND FROM stg_tseries.SPARC_SPC_CHART_MAST");
+                sqlBuilder.AppendLine("SELECT distinct TEC_KIND FROM stg_tseries.SPARC_SPC_CHART_MAST ORDER BY TEC_KIND");
 
                 var sql = sqlBuilder.ToString();
 
@@ -57,8 +57,149 @@ namespace EditorService
                 throw;
             }
         }
+        
+
+        internal async Task<IEnumerable<string>> CategoryList(SpcMasterParameter param)
+        {
+            try
+            {
+                var sqlBuilder = new StringBuilder();
+                sqlBuilder.AppendLine("SELECT distinct CCATEGORY FROM stg_tseries.SPARC_SPC_CHART_MAST");
+                sqlBuilder.AppendLine("WHERE 1=1");
+
+                var parameters = new Dictionary<string, object>();
+
+                if (!string.IsNullOrEmpty(param.TEC_KIND))
+                {
+                    sqlBuilder.AppendLine("AND TEC_KIND = :TEC_KIND");
+                    parameters.Add("TEC_KIND", param.TEC_KIND);
+                }
+
+                // ORDER BY句を追加
+                sqlBuilder.AppendLine("ORDER BY CCATEGORY");
+
+                var sql = sqlBuilder.ToString();
+
+                var results = new List<string>();
+                using (var reader = await _db.ExecuteAsync(sql, parameters))
+                {
+                    if (reader.HasRows)
+                    {
+                        var idxCCATEGORY = reader.GetOrdinal("CCATEGORY");
+                        while (reader.Read())
+                        {
+                            results.Add(reader.GetStringSafe(idxCCATEGORY));
+                        }
+                    }
+                }
+
+                return results;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        internal async Task<IEnumerable<string>> EquipmentList(SpcMasterParameter param)
+        {
+            try
+            {
+                var sqlBuilder = new StringBuilder();
+                sqlBuilder.AppendLine("SELECT distinct EQP_ID FROM stg_tseries.SPARC_SPC_CHART_MAST");
+                sqlBuilder.AppendLine("WHERE 1=1");
+
+                var parameters = new Dictionary<string, object>();
+
+                if (!string.IsNullOrEmpty(param.TEC_KIND))
+                {
+                    sqlBuilder.AppendLine("AND TEC_KIND = :TEC_KIND");
+                    parameters.Add("TEC_KIND", param.TEC_KIND);
+                }
+                if (!string.IsNullOrEmpty(param.CCATEGORY))
+                {
+                    sqlBuilder.AppendLine("AND CCATEGORY = :CCATEGORY");
+                    parameters.Add("CCATEGORY", param.CCATEGORY);
+                }
+
+                // ORDER BY句を追加
+                sqlBuilder.AppendLine("ORDER BY EQP_ID");
+
+                var sql = sqlBuilder.ToString();
+
+                var results = new List<string>();
+                using (var reader = await _db.ExecuteAsync(sql, parameters))
+                {
+                    if (reader.HasRows)
+                    {
+                        var idxEQP_ID = reader.GetOrdinal("EQP_ID");
+                        while (reader.Read())
+                        {
+                            results.Add(reader.GetStringSafe(idxEQP_ID));
+                        }
+                    }
+                }
+
+                return results;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
 
+        internal async Task<IEnumerable<string>>GroupNameList(SpcMasterParameter param)
+        {
+            try
+            {
+                var sqlBuilder = new StringBuilder();
+                sqlBuilder.AppendLine("SELECT distinct GNAME FROM stg_tseries.SPARC_SPC_CHART_MAST");
+                sqlBuilder.AppendLine("WHERE 1=1");
+
+                var parameters = new Dictionary<string, object>();
+
+                if (!string.IsNullOrEmpty(param.TEC_KIND))
+                {
+                    sqlBuilder.AppendLine("AND TEC_KIND = :TEC_KIND");
+                    parameters.Add("TEC_KIND", param.TEC_KIND);
+                }
+                if (!string.IsNullOrEmpty(param.CCATEGORY))
+                {
+                    sqlBuilder.AppendLine("AND CCATEGORY = :CCATEGORY");
+                    parameters.Add("CCATEGORY", param.CCATEGORY);
+                }
+                if (!string.IsNullOrEmpty(param.EQP_ID))
+                {
+                    sqlBuilder.AppendLine("AND EQP_ID = :EQP_ID");
+                    parameters.Add("EQP_ID", param.EQP_ID);
+                }
+
+                // ORDER BY句を追加
+                sqlBuilder.AppendLine("ORDER BY GNAME");
+
+                var sql = sqlBuilder.ToString();
+
+                var results = new List<string>();
+                using (var reader = await _db.ExecuteAsync(sql, parameters))
+                {
+                    if (reader.HasRows)
+                    {
+                        var idxGNAME = reader.GetOrdinal("GNAME");
+                        while (reader.Read())
+                        {
+                            results.Add(reader.GetStringSafe(idxGNAME));
+                        }
+                    }
+                }
+
+                return results;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         internal async Task<IEnumerable<SpcMasterResult>> SpcChartSearch(SpcMasterParameter param)
         {
@@ -91,6 +232,9 @@ namespace EditorService
                     sqlBuilder.AppendLine("AND GNAME = :GNAME");
                     parameters.Add("GNAME", param.GNAME);
                 }
+
+                // ORDER BY句を追加
+                sqlBuilder.AppendLine("ORDER BY TEC_KIND,CCATEGORY,EQP_ID,GNAME,DCITEM_NM");
 
                 var sql = sqlBuilder.ToString();
 

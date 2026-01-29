@@ -1,5 +1,3 @@
-C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\obj\Debug\EditorService.csproj.AssemblyReference.cache
-C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\obj\Debug\EditorService.csproj.CoreCompileInputs.cache
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\bin\EditorService.dll.config
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\bin\EditorService.dll
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\bin\EditorService.pdb
@@ -107,6 +105,8 @@ C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\bin\System.Text.
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\bin\System.Text.Json.xml
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\obj\Debug\EditorService.csproj.AssemblyReference.cache
+C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\obj\Debug\EditorService.csproj.CoreCompileInputs.cache
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\obj\Debug\EditorSe.323E0992.Up2Date
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\obj\Debug\EditorService.dll
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\EditorService\obj\Debug\EditorService.pdb

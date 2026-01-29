@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SMPPluginDebug")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2722f122d4b5a07fdc9e42c721d25ab441f830e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89b53a924a17cea82ab97e5d59fe3e1de8cf4aa0")]
 [assembly: System.Reflection.AssemblyProductAttribute("SMPPluginDebug")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SMPPluginDebug")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

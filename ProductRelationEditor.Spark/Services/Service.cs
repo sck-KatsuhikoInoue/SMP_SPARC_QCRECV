@@ -17,19 +17,6 @@ namespace ProductRelationEditor.Spark.Services
             ServiceUrl=$@"https://localhost:44347/";
         }
 
-        public async Task<IEnumerable<ItemModel>> FetchDataAsync()
-        {
-            await Task.Delay(1000);
-            return new List<ItemModel>
-            {
-                new ItemModel("ItemA1", "ItemB1"),
-                new ItemModel("ItemA2", "ItemB2"),
-                new ItemModel("ItemA3", "ItemB3"),
-                new ItemModel("ItemA4", "ItemB4"),
-                new ItemModel("ItemA5", "ItemB5"),
-            };
-        }
-
         public async Task<bool> RegisterDataAsync()
         {
             await Task.Delay(1000);
@@ -50,13 +37,78 @@ namespace ProductRelationEditor.Spark.Services
             var doc = XDocument.Parse(xml);
             var items = new List<string>();
 
-            foreach (var row in doc.Descendants("TecKindList"))
+            foreach (var row in doc.Descendants("DataItemList"))
             {
                 items.Add((string)row.Element("DataItem"));
             }
             return items;
         }
 
+        public async Task<IEnumerable<string>> EditorServiceCategoryList(string searchConditionJson)
+        {
+            using var client = new HttpClient();
+            var url = $"{ServiceUrl}/EditorServiceVerticaConnect.asmx/CategoryList";
+            var content = new StringContent($"searchCondition={System.Web.HttpUtility.UrlEncode(searchConditionJson)}", Encoding.UTF8, "application/x-www-form-urlencoded");
+
+            var response = await client.PostAsync(url, content);
+            response.EnsureSuccessStatusCode();
+
+            var xml = await response.Content.ReadAsStringAsync();
+
+            //// XMLから必要なデータを抽出（例: DataTable形式のXMLをパース）
+            var doc = XDocument.Parse(xml);
+            var items = new List<string>();
+
+            foreach (var row in doc.Descendants("DataItemList"))
+            {
+                items.Add((string)row.Element("DataItem"));
+            }
+            return items;
+        }        
+
+        public async Task<IEnumerable<string>> EditorServiceEquipmentList(string searchConditionJson)
+        {
+            using var client = new HttpClient();
+            var url = $"{ServiceUrl}/EditorServiceVerticaConnect.asmx/EquipmentList";
+            var content = new StringContent($"searchCondition={System.Web.HttpUtility.UrlEncode(searchConditionJson)}", Encoding.UTF8, "application/x-www-form-urlencoded");
+
+            var response = await client.PostAsync(url, content);
+            response.EnsureSuccessStatusCode();
+
+            var xml = await response.Content.ReadAsStringAsync();
+
+            //// XMLから必要なデータを抽出（例: DataTable形式のXMLをパース）
+            var doc = XDocument.Parse(xml);
+            var items = new List<string>();
+
+            foreach (var row in doc.Descendants("DataItemList"))
+            {
+                items.Add((string)row.Element("DataItem"));
+            }
+            return items;
+        }
+        
+        public async Task<IEnumerable<string>> EditorServiceGroupNameList(string searchConditionJson)
+        {
+            using var client = new HttpClient();
+            var url = $"{ServiceUrl}/EditorServiceVerticaConnect.asmx/GroupNameList";
+            var content = new StringContent($"searchCondition={System.Web.HttpUtility.UrlEncode(searchConditionJson)}", Encoding.UTF8, "application/x-www-form-urlencoded");
+
+            var response = await client.PostAsync(url, content);
+            response.EnsureSuccessStatusCode();
+
+            var xml = await response.Content.ReadAsStringAsync();
+
+            //// XMLから必要なデータを抽出（例: DataTable形式のXMLをパース）
+            var doc = XDocument.Parse(xml);
+            var items = new List<string>();
+
+            foreach (var row in doc.Descendants("DataItemList"))
+            {
+                items.Add((string)row.Element("DataItem"));
+            }
+            return items;
+        }
 
         public async Task<IEnumerable<ItemModel>> EditorServiceSearchSpcChart(string searchConditionJson)
         {
@@ -69,15 +121,24 @@ namespace ProductRelationEditor.Spark.Services
 
             var xml = await response.Content.ReadAsStringAsync();
 
-            // XMLから必要なデータを抽出（例: DataTable形式のXMLをパース）
+            // XMLから必要なデータを抽出
             var doc = XDocument.Parse(xml);
             var items = new List<ItemModel>();
 
-            foreach (var row in doc.Descendants("row"))
+            foreach (var row in doc.Descendants("DataItemList"))
             {
-                var item1 = (string)row.Element("TEC_KIND");
-                var item2 = (string)row.Element("GNAME");
-                items.Add(new ItemModel(item1, item2));
+                items.Add(new ItemModel(
+                    (string)row.Element("TEC_KIND"),
+                    (string)row.Element("CCATEGORY"),
+                    (string)row.Element("EQP_ID"),
+                    (string)row.Element("GNAME"),
+                    (string)row.Element("PRODUCT"),
+                    (string)row.Element("P_RECIPE"),
+                    (string)row.Element("TIMESERIES_SEQ_NO"),
+                    (string)row.Element("DCITEM_NM"),
+                    (string)row.Element("DCITEM_UNIT"),
+                    (string)row.Element("CTITLE")
+                ));
             }
             return items;
         }

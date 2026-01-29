@@ -25,6 +25,10 @@ namespace EditorService
     [System.ComponentModel.ToolboxItem(false)]
     public class EditorService : System.Web.Services.WebService
     {
+        /// <summary>
+        /// TECリストを出力します
+        /// </summary>
+        /// <returns>TECの一覧を DataTable で返します。</returns>
         [WebMethod]
         public DataTable TecKindList()
         {
@@ -36,49 +40,94 @@ namespace EditorService
             var result = resultTask.Result;
 
             return ConvertToDataTable(result);
-            //// IEnumerable<SpcMasterResult> を DataTable に変換
-            //var dataTable = ConvertToDataTable(result);
-
-            //// DataTableをJSONに変換して返す
-            //string json;
-            //using (var sw = new System.IO.StringWriter())
-            //{
-            //    dataTable.WriteXml(sw, XmlWriteMode.WriteSchema, false);
-            //    json = sw.ToString();
-            //}
-            //return json;
         }
 
+        /// <summary>
+        /// カテゴリリストを出力します
+        /// </summary>
+        /// <param name="searchCondition">検索条件（JSON形式）</param>
+        /// <returns>検索結果を DataTable で返します。</returns>
         [WebMethod]
-        public string SearchSpcChart(string searchCondition)
+        public DataTable CategoryList(string searchCondition)
         {
-            try
-            {
-                var creatorVertica = new CreatorVertica();
+            var creatorVertica = new CreatorVertica();
 
-                var param = ConvertToSpcMasterParameter(searchCondition);
+            var param = ConvertToSpcMasterParameter(searchCondition);
 
-                // 検索実行
-                var resultTask = creatorVertica.SpcChartSearch(param);
-                resultTask.Wait(); // 非同期タスクを同期的に待機
-                var result = resultTask.Result;
+            // 検索実行
+            var resultTask = creatorVertica.CategoryList(param);
+            resultTask.Wait(); // 非同期タスクを同期的に待機
+            var result = resultTask.Result;
 
-                // IEnumerable<SpcMasterResult> を DataTable に変換
-                var dataTable = ConvertToDataTable(result);
+            // IEnumerable<SpcMasterResult> を DataTable に変換
+            return ConvertToDataTable(result);
 
-                // DataTableをJSONに変換して返す
-                string json;
-                using (var sw = new System.IO.StringWriter())
-                {
-                    dataTable.WriteXml(sw, XmlWriteMode.WriteSchema, false);
-                    json = sw.ToString();
-                }
-                return json;
-            }
-            catch (Exception ex)
-            {
-                return $"{{\"error\":\"{ex.Message}\"}}";
-            }
+        }
+
+        /// <summary>
+        /// 装置IDリストを出力します
+        /// </summary>
+        /// <param name="searchCondition">検索条件（JSON形式）</param>
+        /// <returns>検索結果を DataTable で返します。</returns>
+        [WebMethod]
+        public DataTable EquipmentList(string searchCondition)
+        {
+            var creatorVertica = new CreatorVertica();
+
+            var param = ConvertToSpcMasterParameter(searchCondition);
+
+            // 検索実行
+            var resultTask = creatorVertica.EquipmentList(param);
+            resultTask.Wait(); // 非同期タスクを同期的に待機
+            var result = resultTask.Result;
+
+            // IEnumerable<SpcMasterResult> を DataTable に変換
+            return ConvertToDataTable(result);
+
+        }
+
+        /// <summary>
+        /// グループ名称リストを出力します
+        /// </summary>
+        /// <param name="searchCondition">検索条件（JSON形式）</param>
+        /// <returns>検索結果を DataTable で返します。</returns>
+        [WebMethod]
+        public DataTable GroupNameList(string searchCondition)
+        {
+            var creatorVertica = new CreatorVertica();
+
+            var param = ConvertToSpcMasterParameter(searchCondition);
+
+            // 検索実行
+            var resultTask = creatorVertica.GroupNameList(param);
+            resultTask.Wait(); // 非同期タスクを同期的に待機
+            var result = resultTask.Result;
+
+            // IEnumerable<SpcMasterResult> を DataTable に変換
+            return ConvertToDataTable(result);
+
+        }
+
+        /// <summary>
+        /// SPCチャートの検索を行います。
+        /// </summary>
+        /// <param name="searchCondition">検索条件（JSON形式）</param>
+        /// <returns>検索結果を DataTable で返します。</returns>
+        [WebMethod]
+        public DataTable SearchSpcChart(string searchCondition)
+        {
+            var creatorVertica = new CreatorVertica();
+
+            var param = ConvertToSpcMasterParameter(searchCondition);
+
+            // 検索実行
+            var resultTask = creatorVertica.SpcChartSearch(param);
+            resultTask.Wait(); // 非同期タスクを同期的に待機
+            var result = resultTask.Result;
+
+            // IEnumerable<SpcMasterResult> を DataTable に変換
+            return ConvertToDataTable(result);
+
         }
 
         // searchCondition を SpcMasterParameter に変換するヘルパーメソッド
@@ -95,7 +144,7 @@ namespace EditorService
             // DataTable の列を定義
             var dataTable = new DataTable();
 
-            dataTable.TableName = "TecKindList";
+            dataTable.TableName = "DataItemList";
             dataTable.Columns.Add("DataItem", typeof(string));
 
 
@@ -115,6 +164,7 @@ namespace EditorService
         {
             var dataTable = new DataTable();
 
+            dataTable.TableName = "DataItemList";
             // DataTable の列を定義
             foreach (var prop in typeof(SpcMasterResult).GetProperties())
             {

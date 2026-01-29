@@ -27,20 +27,20 @@
 
         <StackPanel Grid.Column ="1" Orientation="Horizontal">
             <Label x:Name="lbl_GID_t" Content="ログインユーザ"  Width="80"/>
-            <Label x:Name="lbl_GID" Content="0020H22427"  Width="80"/>
+            <Label x:Name="lbl_GID" Content="{Binding WindowsUserName}" Width="80"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2"  Orientation="Horizontal">
             <Label x:Name="label1" Content="TEC"  Width="50"/>
-            <ComboBox x:Name="cmbTecKind" Width="150"/>
+            <ComboBox x:Name="cmbTecKind" Width="150" ItemsSource="{Binding TecKindList}" SelectedItem="{Binding SelectedTecKind, Mode=TwoWay}"/>
             <Label x:Name="label2" Content="カテゴリ" Width="50"/>
-            <ComboBox x:Name="comboBox2" Width="150"/>
+            <ComboBox x:Name="cmbCategpry" Width="150" ItemsSource="{Binding CategoryList}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"/>
             <Label x:Name="label3" Content="装置" Width="50"/>
-            <ComboBox x:Name="comboBox3" Width="150"/>
+            <ComboBox x:Name="cmbEquipment" Width="150" ItemsSource="{Binding EquipmentList}" SelectedItem="{Binding SelectedEquipment, Mode=TwoWay}"/>
             <Label x:Name="label4" Content="グループ名" Width="60"/>
-            <ComboBox x:Name="comboBox4" Width="150"/>
+            <ComboBox x:Name="cmbGroupName" Width="150" ItemsSource="{Binding GroupNameList}" SelectedItem="{Binding SelectedGroupName, Mode=TwoWay}"/>
             <Label x:Name="label5" Content="" Width="80"/>
-            <Button Content="データ取得" Width="120" Command="{Binding FetchDataCommand}"/>
+            <Button x:Name="btnSearch" Content="データ取得" Width="120" Command="{Binding FetchDataCommand}"/>
         </StackPanel>
 
 
@@ -49,15 +49,22 @@
             <Button Content="登録" Width="120" Command="{Binding RegisterDataCommand}"/>
         </StackPanel>
 
-        <DataGrid Grid.Row="4" Grid.RowSpan="7"
+        <DataGrid x:Name="GrMaster" Grid.Row="4" Grid.RowSpan="7"
                   ItemsSource="{Binding Items}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
                   >
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Item1" Binding="{Binding Item1}" />
-                <DataGridTextColumn Header="Item2" Binding="{Binding Item2}" />
+                <DataGridTextColumn Header="TEC_KIND" Binding="{Binding TEC_KIND}" />
+                <DataGridTextColumn Header="CCATEGORY" Binding="{Binding CCATEGORY}" />
+                <DataGridTextColumn Header="EQP_ID" Binding="{Binding EQP_ID}" />
+                <DataGridTextColumn Header="GNAME" Binding="{Binding GNAME}" />
+                <DataGridTextColumn Header="PRODUCT" Binding="{Binding PRODUCT}" />
+                <DataGridTextColumn Header="TIMESERIES_SEQ_NO" Binding="{Binding TIMESERIES_SEQ_NO}" />
+                <DataGridTextColumn Header="DCITEM_NM" Binding="{Binding DCITEM_NM}" />
+                <DataGridTextColumn Header="DCITEM_UNIT" Binding="{Binding DCITEM_UNIT}" />
+                <DataGridTextColumn Header="CTITLE" Binding="{Binding CTITLE}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

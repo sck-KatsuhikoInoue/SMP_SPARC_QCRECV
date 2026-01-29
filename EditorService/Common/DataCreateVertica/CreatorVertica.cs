@@ -30,6 +30,22 @@ namespace EditorService
             return await _dbAccessService.TecKindList();
         }
 
+        
+        public async Task<IEnumerable<string>> CategoryList(SpcMasterParameter param)
+        {
+            return await _dbAccessService.CategoryList(param);
+        }
+
+        public async Task<IEnumerable<string>> EquipmentList(SpcMasterParameter param)
+        {
+            return await _dbAccessService.EquipmentList(param);
+        }
+
+        public async Task<IEnumerable<string>> GroupNameList(SpcMasterParameter param)
+        {
+            return await _dbAccessService.GroupNameList(param);
+        }
+
         public async Task<IEnumerable<SpcMasterResult>> SpcChartSearch(SpcMasterParameter param)
         {
             return await _dbAccessService.SpcChartSearch(param);
