@@ -491,15 +491,32 @@
           }
         }
       },
+      "EditorService/1.0.0": {
+        "runtime": {
+          "EditorService.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "ProductRelationEditor.Spark/1.0.0": {
         "dependencies": {
           "DXC.EngPF.Framework": "1.6.0",
+          "EditorService": "1.0.0",
           "Prism.Wpf": "8.1.97"
         },
         "runtime": {
           "ProductRelationEditor.Spark.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Vertica.Data/24.3.0.0": {
+        "runtime": {
+          "Vertica.Data.dll": {
+            "assemblyVersion": "24.3.0.0",
+            "fileVersion": "24.3.0.0"
           }
         }
       }
@@ -831,8 +848,18 @@
       "path": "unity.container/5.11.11",
       "hashPath": "unity.container.5.11.11.nupkg.sha512"
     },
+    "EditorService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "ProductRelationEditor.Spark/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Vertica.Data/24.3.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

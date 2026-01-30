@@ -1,7 +1,9 @@
-﻿using ProductRelationEditor.Spark.Models;
+﻿using EditorService.Common.Dto;
 using System.Collections.Generic;
+using System.Data;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -9,19 +11,13 @@ namespace ProductRelationEditor.Spark.Services
 {
     public class Service
     {
-        public string ServiceUrl { get; private set; }
-
+        public string ServiceUrl { get; set; }
         public Service(string hostName)
         {
             //ServiceUrl = $@"{hostName.TrimEnd('/')}/tempurl";
-            ServiceUrl=$@"https://localhost:44347/";
+            ServiceUrl = $@"https://localhost:44347/";
         }
 
-        public async Task<bool> RegisterDataAsync()
-        {
-            await Task.Delay(1000);
-            return true;
-        }
 
         public async Task<IEnumerable<string>> EditorServiceTecKindList()
         {
@@ -151,6 +147,28 @@ namespace ProductRelationEditor.Spark.Services
                 ));
             }
             return items;
+        }
+
+        public async Task<bool> EditorServiceRegistration(IEnumerable<ItemModel> items)
+        {
+            var url = $"{ServiceUrl}/EditorServiceVerticaConnect.asmx/IstarMasterRegistry";
+
+            // itemsはList<ItemModel>型
+            var json = System.Text.Json.JsonSerializer.Serialize(items); // ここで配列をJSON化（OK）
+            var content = new StringContent($"json={System.Web.HttpUtility.UrlEncode(json)}", Encoding.UTF8, "application/x-www-form-urlencoded");
+
+            using var httpClient = new HttpClient();
+
+            System.Diagnostics.Debug.WriteLine($"POST {url}");
+            System.Diagnostics.Debug.WriteLine($"RequestBody: {json}");
+
+            var response = await httpClient.PostAsync(url, content);
+
+            var responseBody = await response.Content.ReadAsStringAsync();
+            System.Diagnostics.Debug.WriteLine($"Response: {response.StatusCode}");
+            System.Diagnostics.Debug.WriteLine($"ResponseBody: {responseBody}");
+
+            return response.IsSuccessStatusCode;
         }
     }
 }

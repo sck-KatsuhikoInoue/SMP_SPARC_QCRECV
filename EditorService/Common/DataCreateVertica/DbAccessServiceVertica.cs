@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization; // この行を追加
+using EditorService.Common.Dto; // この行を追加
 
 
 
@@ -300,6 +301,33 @@ namespace EditorService
             {
                 throw;
             }
+        }
+
+        internal async Task<bool> RegisterIstarMaster(IEnumerable<ItemModel> items)
+        {
+            // 例: トランザクションで一括登録
+            //try
+            //{
+            //    foreach (var item in items)
+            //    {
+            //        // 必要なSQLとパラメータを作成
+            //        var sql = @"INSERT INTO ISTAR_MASTER (LARGE_GROUP, SMALL_GROUP, DISPLAY_NAME, ...) VALUES (@LARGE_GROUP, @SMALL_GROUP, @DISPLAY_NAME, ...)";
+            //        var parameters = new Dictionary<string, object>
+            //        {
+            //            { "@LARGE_GROUP", item.LARGE_GROUP },
+            //            { "@SMALL_GROUP", item.SMALL_GROUP },
+            //            { "@DISPLAY_NAME", item.DISPLAY_NAME },
+            //            // ...他のカラムも追加
+            //        };
+            //        await _db.ExecuteAsync(sql, parameters);
+            //    }
+            //    return true;
+            //}
+            //catch
+            //{
+                // ログ出力など必要に応じて
+                return false;
+            //}
         }
     }
 

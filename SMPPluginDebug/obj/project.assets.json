@@ -812,11 +812,21 @@
           }
         }
       },
+      "EditorService/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/EditorService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EditorService.dll": {}
+        }
+      },
       "ProductRelationEditor.Spark/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "DXC.EngPF.Framework": "1.6.0",
+          "EditorService": "1.0.0",
           "Prism.Wpf": "8.1.97"
         },
         "compile": {
@@ -2191,6 +2201,11 @@
         "unity.container.5.11.11.nupkg.sha512",
         "unity.container.nuspec"
       ]
+    },
+    "EditorService/1.0.0": {
+      "type": "project",
+      "path": "../EditorService/EditorService.csproj",
+      "msbuildProject": "../EditorService/EditorService.csproj"
     },
     "ProductRelationEditor.Spark/1.0.0": {
       "type": "project",

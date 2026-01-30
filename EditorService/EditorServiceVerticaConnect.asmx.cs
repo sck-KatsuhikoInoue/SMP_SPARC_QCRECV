@@ -1,19 +1,11 @@
-﻿using Newtonsoft.Json; // Newtonsoft.Json の名前空間をインポート
+﻿using EditorService.Common.Dto;
+using Newtonsoft.Json; // Newtonsoft.Json の名前空間をインポート
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Web;
-using System.Web.Configuration;
+using System.Text.Json; // System.Text.Json の名前空間をインポート
 using System.Web.Services;
-using System.Xml;
-using System.Xml.Serialization;
+using System.Web.Script.Services; // ← 追加
 
 namespace EditorService
 {
@@ -23,6 +15,7 @@ namespace EditorService
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
+    [ScriptService] // ← 追加
     public class EditorService : System.Web.Services.WebService
     {
         /// <summary>
@@ -128,6 +121,28 @@ namespace EditorService
             // IEnumerable<SpcMasterResult> を DataTable に変換
             return ConvertToDataTable(result);
 
+        }
+
+        /// <summary>
+        /// Istar Master Registry を登録します。
+        /// </summary>
+        /// <param name="json">JSON形式のデータ</param>
+        /// <returns>登録結果を返します。</returns>
+        [WebMethod]
+        public async System.Threading.Tasks.Task<bool> IstarMasterRegistry(string json)
+        {
+            var options = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
+            // もしjsonがダブルクォートで囲まれていたらアンラップ
+            if (json.StartsWith("\"") && json.EndsWith("\""))
+            {
+                json = System.Text.Json.JsonSerializer.Deserialize<string>(json);
+            }
+
+            var items = System.Text.Json.JsonSerializer.Deserialize<List<ItemModel>>(json, options);
+
+            var creator = new CreatorVertica();
+            return await creator.RegisterIstarMaster(items);
         }
 
         // searchCondition を SpcMasterParameter に変換するヘルパーメソッド

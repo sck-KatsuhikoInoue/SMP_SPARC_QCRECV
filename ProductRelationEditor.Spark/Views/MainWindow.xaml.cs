@@ -6,7 +6,7 @@ using System.Text;
 using System;
 using System.Collections.Generic;
 using ProductRelationEditor.Spark.ViewModels;
-using ProductRelationEditor.Spark.Models;
+using EditorService.Common.Dto;
 
 namespace ProductRelationEditor.Spark.Views
 {
@@ -473,23 +473,6 @@ namespace ProductRelationEditor.Spark.Views
                 grid.Items.Refresh();
                 e.Handled = true;
                 return;
-            }
-        }
-
-        private void OnRegisterData()
-        {
-            // DataGridのItemsSourceをViewModelに渡す
-            var items = GrMaster.ItemsSource as IEnumerable<ItemModel>;
-            if (items == null) return;
-
-            // ② 登録確認メッセージのみViewで実施
-            var result = MessageBox.Show("データを登録しますか？", "登録確認", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-            if (result != MessageBoxResult.OK) return;
-
-            // ViewModelへ全データを渡す（判定・登録はViewModelで実施）
-            if (DataContext is MainWindowViewModel vm)
-            {
-                vm.RegisterData(items.ToList());
             }
         }
     }

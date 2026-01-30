@@ -171,6 +171,7 @@
     <Compile Include="Common\DataCreateVertica\CreatorVertica.cs" />
     <Compile Include="Common\DataCreateVertica\DbAccessServiceVertica.cs" />
     <Compile Include="Common\DataCreateVertica\SpcMaster.cs" />
+    <Compile Include="Common\Dto\ItemModel.cs" />
     <Compile Include="Common\VerticaLiblary\IVerticaDb.cs" />
     <Compile Include="Common\VerticaLiblary\VerticaDb.cs" />
     <Compile Include="Common\VerticaLiblary\VerticaDbException.cs" />

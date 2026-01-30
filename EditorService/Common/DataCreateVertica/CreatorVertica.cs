@@ -1,3 +1,4 @@
+using EditorService.Common.Dto;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
@@ -51,5 +52,9 @@ namespace EditorService
             return await _dbAccessService.SpcChartSearch(param);
         }
 
+        public async Task<bool> RegisterIstarMaster(IEnumerable<ItemModel> items)
+        {
+            return await _dbAccessService.RegisterIstarMaster(items);
+        }
     }
 }

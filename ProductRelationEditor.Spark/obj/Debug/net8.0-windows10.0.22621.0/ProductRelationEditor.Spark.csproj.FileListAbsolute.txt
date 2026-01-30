@@ -60,3 +60,7 @@ C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\ProductRelationEditor.Spark\ob
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\ProductRelationEditor.Spark\obj\Debug\net8.0-windows10.0.22621.0\refint\ProductRelationEditor.Spark.dll
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\ProductRelationEditor.Spark\obj\Debug\net8.0-windows10.0.22621.0\ProductRelationEditor.Spark.pdb
 C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\ProductRelationEditor.Spark\obj\Debug\net8.0-windows10.0.22621.0\ref\ProductRelationEditor.Spark.dll
+C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\ProductRelationEditor.Spark\bin\Debug\net8.0-windows10.0.22621.0\EditorService.dll
+C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\ProductRelationEditor.Spark\bin\Debug\net8.0-windows10.0.22621.0\Vertica.Data.dll
+C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\ProductRelationEditor.Spark\bin\Debug\net8.0-windows10.0.22621.0\EditorService.pdb
+C:\Users\0020H22427\source\repos\SMP_SPARC_QCRECV\ProductRelationEditor.Spark\bin\Debug\net8.0-windows10.0.22621.0\EditorService.dll.config

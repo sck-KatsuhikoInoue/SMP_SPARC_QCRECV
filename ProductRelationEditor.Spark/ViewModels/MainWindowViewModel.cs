@@ -1,13 +1,15 @@
 using DXC.EngPF.Framework.Common;
 using Prism.Commands;
 using Prism.Services.Dialogs;
-using ProductRelationEditor.Spark.Models;
+using EditorService.Common.Dto;
 using ProductRelationEditor.Spark.Services;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Diagnostics;
 
 namespace ProductRelationEditor.Spark.ViewModels
 {
@@ -136,10 +138,12 @@ namespace ProductRelationEditor.Spark.ViewModels
             // データ取得ボタン押下時にFetchDataAsyncを非同期実行するコマンドを生成（UIとバインド用）
             FetchDataCommand = new DelegateCommand(async () => await FetchDataAsync());
             // RegisterDataCommandは何もしない（ViewのOnRegisterDataで処理）
-            RegisterDataCommand = new DelegateCommand(() => { });
+            RegisterDataCommand = new DelegateCommand(async () => await Register());
 
             // TecKind一覧の初期化
             _ = InitializeTecKindListAsync();
+
+            TestItemModelDeserialize();
         }
 
         #region "ComboBoxリスト取得"
@@ -264,14 +268,78 @@ namespace ProductRelationEditor.Spark.ViewModels
         // データ登録処理（Service経由でDB登録のみ）
         public async Task Register()
         {
-            var result = await _service.RegisterDataAsync();
-            if (result)
+            // ItemsはObservableCollection<ItemModel>
+            var items = Items?.ToList() ?? new List<ItemModel>();
+
+            // ① 必須項目未記入チェック
+            var errorRows = items.Where(x =>
+                x.SENDFLG &&
+                (string.IsNullOrWhiteSpace(x.LARGE_GROUP) ||
+                 string.IsNullOrWhiteSpace(x.SMALL_GROUP) ||
+                 string.IsNullOrWhiteSpace(x.DISPLAY_NAME))
+            ).ToList();
+
+            if (errorRows.Any())
             {
-                MessageBox.Show("登録に成功しました");
+                MessageBox.Show("ISTAR登録がチェックされている行で、大項目・小分類・測定項目が未記入のものがあります。", "入力エラー", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
-            else
+
+            // ② 登録確認メッセージ
+            var result = MessageBox.Show("データを登録しますか？", "登録確認", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result != MessageBoxResult.OK) return;
+
+            // ③ 未編集行除外
+            var validRows = items.Where(x =>
+                x.SENDFLG ||
+                !string.IsNullOrWhiteSpace(x.LARGE_GROUP) ||
+                !string.IsNullOrWhiteSpace(x.SMALL_GROUP) ||
+                !string.IsNullOrWhiteSpace(x.DISPLAY_NAME) ||
+                x.POINTFLG
+            ).ToList();
+
+            if (!validRows.Any())
             {
-                MessageBox.Show("登録に失敗しました");                       
+                MessageBox.Show("登録対象となるデータがありません。", "登録なし", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            // ④ サービス呼び出しでDB登録
+            try
+            {
+                var serviceResult = await _service.EditorServiceRegistration(validRows);
+                if (serviceResult)
+                {
+                    MessageBox.Show("データ登録が完了しました。", "登録完了", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("登録に失敗しました。", "登録エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"登録処理でエラーが発生しました。\n{ex.Message}", "登録エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // ★ デシリアライズテスト用メソッドを追加
+        public void TestItemModelDeserialize()
+        {
+            string json = "[{\"TEC_KIND\":\"2\",\"CCATEGORY\":\"EQC\",\"EQP_ID\":\"CAP41T\",\"GNAME\":\"CVD_M06H  \",\"PRODUCT\":\"ZQ-CAPA_69-89\",\"P_RECIPE\":\"CAPNPW1.089.00\",\"M_PROCESS_NAME\":\"CAPA_QC\",\"M_WORK_NAME\":\"CAP-CVD2\",\"M_FLD_ID\":\"MRATCVP1:CVDNPW;CAP17PSIO2.00\",\"M_WORK_CODE\":\"CVDNPW;CAP17PSIO2\",\"TIMESERIES_SEQ_NO\":\"2-EQC-CVD_M06H-148\",\"DCITEM_NM\":\"MAKU_AVE\",\"DCITEM_UNIT\":\"nm\",\"CTITLE\":\"CAP41T_TH_069-089\",\"SENDFLG\":false,\"LARGE_GROUP\":\"1\",\"SMALL_GROUP\":\"2\",\"DISPLAY_NAME\":\"3\",\"CHAMBER_NAME\":\"\",\"POINTFLG\":false}]";
+            var options = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            try
+            {
+                var items = System.Text.Json.JsonSerializer.Deserialize<List<ItemModel>>(json, options);
+                Debug.WriteLine($"デシリアライズ成功: 件数={items?.Count ?? 0}");
+                if (items != null && items.Count > 0)
+                {
+                    Debug.WriteLine($"TEC_KIND={items[0].TEC_KIND}, SENDFLG={items[0].SENDFLG}, POINTFLG={items[0].POINTFLG}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"デシリアライズ失敗: {ex.Message}");
             }
         }
         #endregion

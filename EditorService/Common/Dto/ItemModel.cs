@@ -1,4 +1,4 @@
-﻿namespace ProductRelationEditor.Spark.Models
+namespace EditorService.Common.Dto
 {
     public class ItemModel
     {
@@ -24,27 +24,27 @@
         public bool POINTFLG { get; set; }
 
         public ItemModel(
-            string tecKind,
-            string ccategory,
-            string eqpId,
-            string gname,
-            string product,
-            string pRecipe,
-            string mprocessnema,
-            string mworkname,
-            string mfldid,
-            string mworkcode,
-            string timeseriesSeqNo,
-            string dcitemNm,
-            string dcitemUnit,
-            string ctitle,
-            bool sendflg,
-            string lagegroup,
-            string smallgroup,
-            string displayname,
-            string chambername,
-            bool pointflg
-            )
+                    string tecKind,
+                    string ccategory,
+                    string eqpId,
+                    string gname,
+                    string product,
+                    string pRecipe,
+                    string mprocessnema,
+                    string mworkname,
+                    string mfldid,
+                    string mworkcode,
+                    string timeseriesSeqNo,
+                    string dcitemNm,
+                    string dcitemUnit,
+                    string ctitle,
+                    bool sendflg,
+                    string lagegroup,
+                    string smallgroup,
+                    string displayname,
+                    string chambername,
+                    bool pointflg
+                    )
         {
             TEC_KIND = tecKind;
             CCATEGORY = ccategory;
