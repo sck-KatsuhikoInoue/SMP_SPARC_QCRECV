@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProductRelationEditor.Spark")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89b53a924a17cea82ab97e5d59fe3e1de8cf4aa0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f57a3b9f45eb3262b934901e59a3c09fa01fe0e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProductRelationEditor.Spark")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProductRelationEditor.Spark")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -207,6 +207,7 @@ namespace EditorService
             {
                 var sqlBuilder = new StringBuilder();
                 sqlBuilder.AppendLine("SELECT *");
+                sqlBuilder.AppendLine(",1 as SENDFLG,null as LARGE_GROUP,null as SMALL_GROUP,null as DISPLAY_NAME,null as CHAMBER_NAME,0 as POINTFLG");
                 sqlBuilder.AppendLine("FROM stg_tseries.SPARC_SPC_CHART_MAST");
                 sqlBuilder.AppendLine("WHERE 1=1");
 
@@ -249,10 +250,20 @@ namespace EditorService
                         var idxGNAME = reader.GetOrdinal("GNAME");
                         var idxPRODUCT = reader.GetOrdinal("PRODUCT");
                         var idxP_RECIPE = reader.GetOrdinal("P_RECIPE");
+                        var idxM_PROCESS_NAME = reader.GetOrdinal("M_PROCESS_NAME");
+                        var idxM_WORK_NAME = reader.GetOrdinal("M_WORK_NAME");
+                        var idxM_FLD_ID = reader.GetOrdinal("M_FLD_ID");
+                        var idxM_WORK_CODE = reader.GetOrdinal("M_WORK_CODE");
                         var idxTIMESERIES_SEQ_NO = reader.GetOrdinal("TIMESERIES_SEQ_NO");
                         var idxDCITEM_NM = reader.GetOrdinal("DCITEM_NM");
                         var idxDCITEM_UNIT = reader.GetOrdinal("DCITEM_UNIT");
                         var idxCTITLE = reader.GetOrdinal("CTITLE");
+                        var idxSENDFLG = reader.GetOrdinal("SENDFLG");
+                        var idxLARGE_GROUP = reader.GetOrdinal("LARGE_GROUP");
+                        var idxSMALL_GROUP = reader.GetOrdinal("SMALL_GROUP");
+                        var idxDISPLAY_NAME = reader.GetOrdinal("DISPLAY_NAME");
+                        var idxCHAMBER_NAME = reader.GetOrdinal("CHAMBER_NAME");
+                        var idxPOINTFLG = reader.GetOrdinal("POINTFLG");
 
                         while (reader.Read())
                         {
@@ -264,10 +275,20 @@ namespace EditorService
                                 GNAME = reader.GetStringSafe(idxGNAME),
                                 PRODUCT = reader.GetStringSafe(idxPRODUCT),
                                 P_RECIPE = reader.GetStringSafe(idxP_RECIPE),
+                                M_PROCESS_NAME = reader.GetStringSafe(idxM_PROCESS_NAME),
+                                M_WORK_NAME = reader.GetStringSafe(idxM_WORK_NAME),
+                                M_FLD_ID = reader.GetStringSafe(idxM_FLD_ID),
+                                M_WORK_CODE = reader.GetStringSafe(idxM_WORK_CODE),
                                 TIMESERIES_SEQ_NO = reader.GetStringSafe(idxTIMESERIES_SEQ_NO),
                                 DCITEM_NM = reader.GetStringSafe(idxDCITEM_NM),
                                 DCITEM_UNIT = reader.GetStringSafe(idxDCITEM_UNIT),
                                 CTITLE = reader.GetStringSafe(idxCTITLE),
+                                SENDFLG = reader.GetIntSafe(idxSENDFLG),
+                                LARGE_GROUP = reader.GetStringSafe(idxLARGE_GROUP),
+                                SMALL_GROUP = reader.GetStringSafe(idxSMALL_GROUP),
+                                DISPLAY_NAME = reader.GetStringSafe(idxDISPLAY_NAME),
+                                CHAMBER_NAME = reader.GetStringSafe(idxCHAMBER_NAME),
+                                POINTFLG = reader.GetIntSafe(idxPOINTFLG),
                             });
                         }
                     }

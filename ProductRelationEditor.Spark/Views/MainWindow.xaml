@@ -5,12 +5,31 @@
              xmlns:v="clr-namespace:ProductRelationEditor.Spark.Views"
              prism:ViewModelLocator.AutoWireViewModel="True">
 
+    <UserControl.Resources>
+        <Style x:Key="HeaderStyleGreen" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="LightGreen"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+        </Style>
+        <Style x:Key="HeaderStyleBlue" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+        </Style>
+    </UserControl.Resources>
+
     <Grid Margin="12">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="13*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="3" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="3" />
             <RowDefinition Height="Auto" />
@@ -43,28 +62,64 @@
             <Button x:Name="btnSearch" Content="データ取得" Width="120" Command="{Binding FetchDataCommand}"/>
         </StackPanel>
 
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2"  Orientation="Horizontal">
+            <Button x:Name="btnDisplay" Content="SPARC(全/最小)" Width="120"  Click="BtnDisplay_Click"/>
+            <Button x:Name="btnCopy" Content="ISTAR複製" Width="120" Command="{Binding CopyCommand}"/>
+            <Button x:Name="btnSendSW" Content="転送On/Off" Width="120" Command="{Binding SendCommand}"/>
+        </StackPanel>
 
-        <StackPanel Grid.Row="10" Grid.Column ="1" Orientation="Horizontal">
+        <StackPanel Grid.Row="12" Grid.Column ="1" Orientation="Horizontal">
             <Label x:Name="label6" Content="" Width="65"/>
             <Button Content="登録" Width="120" Command="{Binding RegisterDataCommand}"/>
         </StackPanel>
 
-        <DataGrid x:Name="GrMaster" Grid.Row="4" Grid.RowSpan="7"
+        <DataGrid x:Name="GrMaster" Grid.Row="6" Grid.RowSpan="7"
                   ItemsSource="{Binding Items}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
-                  >
-
+                  PreviewKeyDown="GrMaster_PreviewKeyDown"
+                  SelectionUnit="CellOrRowHeader"
+                  SelectionMode="Extended">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="TEC_KIND" Binding="{Binding TEC_KIND}" />
-                <DataGridTextColumn Header="CCATEGORY" Binding="{Binding CCATEGORY}" />
-                <DataGridTextColumn Header="EQP_ID" Binding="{Binding EQP_ID}" />
-                <DataGridTextColumn Header="GNAME" Binding="{Binding GNAME}" />
-                <DataGridTextColumn Header="PRODUCT" Binding="{Binding PRODUCT}" />
-                <DataGridTextColumn Header="TIMESERIES_SEQ_NO" Binding="{Binding TIMESERIES_SEQ_NO}" />
-                <DataGridTextColumn Header="DCITEM_NM" Binding="{Binding DCITEM_NM}" />
-                <DataGridTextColumn Header="DCITEM_UNIT" Binding="{Binding DCITEM_UNIT}" />
-                <DataGridTextColumn Header="CTITLE" Binding="{Binding CTITLE}" />
+                <DataGridTextColumn x:Name="colTecKind" Header="TEC_KIND" Binding="{Binding TEC_KIND}" IsReadOnly="True"
+                                    Visibility="{Binding DataContext.ItemVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colCCATEGORY" Header="CCATEGORY" Binding="{Binding CCATEGORY}" IsReadOnly="True" 
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colPRODUCT" Header="PRODUCT" Binding="{Binding PRODUCT}" IsReadOnly="True" 
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colGNAME" Header="GNAME" Binding="{Binding GNAME}" IsReadOnly="True" 
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colEQP_ID" Header="EQP_ID" Binding="{Binding EQP_ID}" IsReadOnly="True"
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colTIMESERIES_SEQ_NO" Header="TIMESERIES_SEQ_NO" Binding="{Binding TIMESERIES_SEQ_NO}" IsReadOnly="True" 
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colM_PROCESS_NAME" Header="M_PROCESS_NAME" Binding="{Binding M_PROCESS_NAME}" IsReadOnly="True" 
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colM_WORK_NAME" Header="M_WORK_NAME" Binding="{Binding M_WORK_NAME}" IsReadOnly="True" 
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colM_FLD_ID" Header="M_FLD_ID" Binding="{Binding M_FLD_ID}" IsReadOnly="True" 
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colM_WORK_CODE" Header="M_WORK_CODE" Binding="{Binding M_WORK_CODE}" IsReadOnly="True" 
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colDCITEM_NM" Header="DCITEM_NM" Binding="{Binding DCITEM_NM}" IsReadOnly="True" 
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colDCITEM_UNIT" Header="DCITEM_UNIT" Binding="{Binding DCITEM_UNIT}" IsReadOnly="True" 
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridTextColumn x:Name="colCTITLE" Header="CTITLE" Binding="{Binding CTITLE}" IsReadOnly="True" 
+                                    HeaderStyle="{StaticResource HeaderStyleBlue}"/>
+                <DataGridCheckBoxColumn Header="ISTAR登録" Binding="{Binding SENDFLG}" 
+                                    HeaderStyle="{StaticResource HeaderStyleGreen}"/>
+                <DataGridTextColumn Header="大項目" Binding="{Binding LARGE_GROUP}" 
+                                    HeaderStyle="{StaticResource HeaderStyleGreen}"/>
+                <DataGridTextColumn Header="小分類" Binding="{Binding SMALL_GROUP}"
+                                    HeaderStyle="{StaticResource HeaderStyleGreen}"/>
+                <DataGridTextColumn Header="測定項目" Binding="{Binding DISPLAY_NAME}"
+                                    HeaderStyle="{StaticResource HeaderStyleGreen}"/>
+                <DataGridTextColumn Header="チャンバー名" Binding="{Binding CHAMBER_NAME}"
+                                    HeaderStyle="{StaticResource HeaderStyleGreen}"/>
+                <DataGridCheckBoxColumn Header="POINT転送フラグ" Binding="{Binding POINTFLG}"
+                                    HeaderStyle="{StaticResource HeaderStyleGreen}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

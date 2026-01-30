@@ -134,10 +134,20 @@ namespace ProductRelationEditor.Spark.Services
                     (string)row.Element("GNAME"),
                     (string)row.Element("PRODUCT"),
                     (string)row.Element("P_RECIPE"),
+                    (string)row.Element("M_PROCESS_NAME"),
+                    (string)row.Element("M_WORK_NAME"),
+                    (string)row.Element("M_FLD_ID"),
+                    (string)row.Element("M_WORK_CODE"),
                     (string)row.Element("TIMESERIES_SEQ_NO"),
                     (string)row.Element("DCITEM_NM"),
                     (string)row.Element("DCITEM_UNIT"),
-                    (string)row.Element("CTITLE")
+                    (string)row.Element("CTITLE"),
+                    (bool)row.Element("SENDFLG"),
+                    (string)row.Element("LARGE_GROUP"),
+                    (string)row.Element("SMALL_GROUP"),
+                    (string)row.Element("DISPLATY_NAME"),
+                    (string)row.Element("CHAMBER_NAME"),
+                    (bool)row.Element("POINTFLG")
                 ));
             }
             return items;

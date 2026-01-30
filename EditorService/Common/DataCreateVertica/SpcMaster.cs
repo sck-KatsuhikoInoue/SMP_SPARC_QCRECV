@@ -40,6 +40,15 @@ namespace EditorService
         public string CNAME { get; set; }
         public string CTITLE { get; set; }
         public string TIMESERIES_SEQ_NO { get; set; }
-        public DateTime ST_TIMESTAMP { get; set; }
+        public DateTime ST_TIMESTAMP_M { get; set; }
+        public string LARGE_GROUP { get; set; }
+        public string SMALL_GROUP { get; set; }
+        public int SENDFLG { get; set; }
+        public int POINTFLG { get; set; }
+        public string UP_USER { get; set; }
+        public DateTime ST_TIMESTAMP_G { get; set; }
+        public string DISPLAY_NAME { get; set; }
+        public string CHAMBER_NAME { get; set; }
+        public DateTime ST_TIMESTAMP_I { get; set; }
     }
 }

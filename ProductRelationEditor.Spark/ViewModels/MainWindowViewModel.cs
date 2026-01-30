@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System;
+using System.Collections.Generic;
 
 namespace ProductRelationEditor.Spark.ViewModels
 {
@@ -118,10 +119,6 @@ namespace ProductRelationEditor.Spark.ViewModels
 
         #endregion
 
-
-
-
-
         public MainWindowViewModel(IDialogService dialogService, PortalContext context) : base(dialogService)
         {
             // SMP上で起動した場合のみ取得可能。デバッグ起動の場合はnullになる。
@@ -138,7 +135,8 @@ namespace ProductRelationEditor.Spark.ViewModels
 
             // データ取得ボタン押下時にFetchDataAsyncを非同期実行するコマンドを生成（UIとバインド用）
             FetchDataCommand = new DelegateCommand(async () => await FetchDataAsync());
-            RegisterDataCommand = new DelegateCommand(async () => await Register());
+            // RegisterDataCommandは何もしない（ViewのOnRegisterDataで処理）
+            RegisterDataCommand = new DelegateCommand(() => { });
 
             // TecKind一覧の初期化
             _ = InitializeTecKindListAsync();
@@ -239,7 +237,6 @@ namespace ProductRelationEditor.Spark.ViewModels
 
         #endregion
 
-
         #region "データ取得・登録処理"
         // データ取得処理
         public async Task FetchDataAsync()
@@ -264,6 +261,7 @@ namespace ProductRelationEditor.Spark.ViewModels
             }
         }
 
+        // データ登録処理（Service経由でDB登録のみ）
         public async Task Register()
         {
             var result = await _service.RegisterDataAsync();
@@ -273,10 +271,9 @@ namespace ProductRelationEditor.Spark.ViewModels
             }
             else
             {
-                MessageBox.Show("登録に失敗しました");
+                MessageBox.Show("登録に失敗しました");                       
             }
         }
         #endregion
-
     }
 }
